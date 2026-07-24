@@ -21,14 +21,14 @@
           extend: {
             colors: {
               brand: {
-                50: '#f4f7ff',
-                100: '#eaf0ff',
-                500: '#4f63ff',
-                700: '#2f45d2',
+                50: '#eef8f7',
+                100: '#dcefed',
+                500: '#287d8e',
+                700: '#1f5f6d',
               },
             },
             boxShadow: {
-              soft: '0 12px 35px rgba(31, 41, 55, 0.12)',
+              soft: '0 12px 35px rgba(31, 95, 109, 0.11)',
             },
             fontFamily: {
               sans: ['Pretendard', 'sans-serif'],
@@ -40,34 +40,72 @@
     <style>
       body {
         font-family: Arial, 'Malgun Gothic', sans-serif;
-        background: #f7f8fc;
+        background: #f7fafc;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .section-divider {
+        border-top: 1px solid rgba(40, 125, 142, 0.12);
+      }
+
+      .interactive-card {
+        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+      }
+
+      .interactive-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(40, 125, 142, 0.3);
+        box-shadow: 0 18px 42px rgba(31, 95, 109, 0.15);
+      }
+
+      a:focus-visible {
+        outline: 3px solid rgba(71, 181, 167, 0.38);
+        outline-offset: 3px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .interactive-card,
+        a {
+          transition: none !important;
+        }
+
+        .interactive-card:hover {
+          transform: none;
+        }
       }
 
       .hero-mask {
         background:
-          linear-gradient(90deg, rgba(3, 10, 28, 0.82), rgba(20, 44, 88, 0.44)),
-          url('./assets/hero-bg.png') center/cover no-repeat;
+          linear-gradient(90deg, rgba(247, 250, 252, 0.42), rgba(234, 244, 246, 0.06)),
+          url('./assets/hero-immune-bg.png') center/cover no-repeat;
         background-position: center center;
       }
 
       .hero-glow {
         box-shadow:
-          0 0 0 1px rgba(255, 255, 255, 0.12),
-          0 22px 54px rgba(3, 8, 20, 0.42);
+          0 0 0 1px rgba(255, 255, 255, 0.7),
+          0 22px 54px rgba(31, 95, 109, 0.18);
       }
     </style>
   </head>
-  <body class="text-slate-800">
-    <section class="hero-mask relative min-h-[92vh] overflow-hidden px-6 py-8 text-white md:px-10 lg:px-16">
+  <body class="text-[#1e3448]">
+    <section class="hero-mask relative min-h-[92vh] overflow-hidden px-6 py-8 text-[#1e3448] md:px-10 lg:px-16">
       <div class="absolute right-0 top-10 hidden h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl lg:block"></div>
-      <div class="absolute bottom-0 left-0 hidden h-72 w-72 rounded-full bg-indigo-400/10 blur-3xl lg:block"></div>
+      <div class="absolute bottom-0 left-0 hidden h-72 w-72 rounded-full bg-teal-400/10 blur-3xl lg:block"></div>
 
       <div class="mx-auto max-w-6xl">
         <header class="mb-10 flex items-center justify-between">
           <div class="text-lg font-semibold tracking-wide">한서연</div>
           <a
             href="#contact"
-            class="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm transition hover:bg-white/20"
+            class="rounded-full border border-brand-500/30 bg-white/55 px-4 py-2 text-sm font-medium shadow-sm backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-500/50 hover:bg-white/90 hover:shadow-md"
           >
             Contact
           </a>
@@ -75,54 +113,57 @@
 
         <div class="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <div class="max-w-2xl">
-            <span class="mb-4 inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-medium tracking-[0.18em] text-sky-100 uppercase">
+            <span class="mb-4 inline-flex rounded-full border border-brand-500/30 bg-white/55 px-3 py-1 text-xs font-medium tracking-[0.18em] text-brand-700 uppercase">
               Research Portfolio
             </span>
-            <h1 class="text-4xl font-semibold leading-tight text-white md:text-5xl lg:text-6xl">
+            <h1 class="text-4xl font-semibold leading-tight text-[#1e3448] md:text-5xl lg:text-6xl">
               한서연
             </h1>
-            <p class="mt-3 text-lg text-slate-100 md:text-xl">
+            <p class="mt-3 text-lg text-slate-700 md:text-xl">
               가천대학교 이길여암당뇨연구원 의생명과학과 석사과정생
             </p>
-            <p class="mt-6 max-w-xl text-base leading-8 text-slate-50 md:text-lg">
+            <p class="mt-2 text-base text-slate-600 md:text-lg">
+              류승원 교수님 중개면역학 연구실 소속
+            </p>
+            <p class="mt-5 max-w-xl text-base leading-8 text-slate-700 md:text-lg">
               Research focus: Immune regulation in sepsis, allergy, and metabolic inflammation
             </p>
             <div class="mt-8 flex flex-wrap gap-3">
               <a
                 href="#research"
-                class="rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:scale-[1.02]"
+                class="rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-teal-300/30 transition duration-200 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-xl hover:shadow-teal-300/40 active:translate-y-0"
               >
                 Research Highlights
               </a>
               <a
                 href="#activities"
-                class="rounded-full border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                class="rounded-full border border-brand-500/30 bg-white/55 px-5 py-3 text-sm font-semibold text-[#1e3448] shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-500/50 hover:bg-white/90 hover:shadow-md active:translate-y-0"
               >
                 Activities
               </a>
               <a
                 href="#publications"
-                class="rounded-full border border-white/35 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                class="rounded-full border border-brand-500/30 bg-white/55 px-5 py-3 text-sm font-semibold text-[#1e3448] shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-brand-500/50 hover:bg-white/90 hover:shadow-md active:translate-y-0"
               >
                 Publications
               </a>
             </div>
           </div>
 
-          <div class="hero-glow rounded-[30px] border border-white/20 bg-slate-950/50 p-5 backdrop-blur-md">
-            <div class="rounded-[24px] bg-slate-950/55 p-5">
+          <div class="hero-glow rounded-[30px] border border-white/70 bg-white/45 p-5 backdrop-blur-md">
+            <div class="rounded-[24px] bg-white/65 p-5">
               <div class="flex items-center justify-between">
-                <span class="text-sm text-sky-100">Current focus</span>
-                <span class="rounded-full bg-emerald-400/20 px-3 py-1 text-xs font-semibold text-emerald-100">Active</span>
+                <span class="text-sm text-brand-700">Current focus</span>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Active</span>
               </div>
               <div class="mt-6 space-y-4">
-                <div class="rounded-2xl bg-white/10 p-4">
-                  <div class="text-sm text-slate-100">Primary research theme</div>
-                  <div class="mt-2 text-lg font-semibold text-white md:text-xl">Sepsis · Allergy · Metabolic inflammation</div>
+                <div class="rounded-2xl bg-brand-50/90 p-4">
+                  <div class="text-sm text-slate-600">Primary research theme</div>
+                  <div class="mt-2 text-lg font-semibold text-[#1e3448] md:text-xl">Sepsis · Allergy · Metabolic inflammation</div>
                 </div>
-                <div class="rounded-2xl bg-white/10 p-4">
-                  <div class="text-sm text-slate-100">Core methods</div>
-                  <div class="mt-2 text-lg font-semibold text-white md:text-xl">FACS · RT-qPCR · ELISA · Sequencing</div>
+                <div class="rounded-2xl bg-brand-50/90 p-4">
+                  <div class="text-sm text-slate-600">Core methods</div>
+                  <div class="mt-2 text-lg font-semibold text-[#1e3448] md:text-xl">FACS · RT-qPCR · ELISA · Sequencing</div>
                 </div>
               </div>
             </div>
@@ -132,13 +173,13 @@
     </section>
 
     <main>
-      <section id="about" class="mx-auto max-w-6xl px-6 py-20 md:px-10 lg:px-16">
+      <section id="about" class="section-divider mx-auto max-w-6xl px-6 py-20 md:px-10 lg:px-16">
         <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-700">About</p>
             <h2 class="mt-3 whitespace-nowrap text-3xl font-semibold md:text-4xl">어떤 연구를 하고 있나요?</h2>
           </div>
-          <div class="rounded-3xl bg-white p-8 shadow-soft">
+          <div class="interactive-card rounded-3xl border border-white bg-white p-8 shadow-soft">
             <p class="text-lg leading-8 text-slate-700">
               Research interests: sequencing, in vivo models, and cytokine-based immunologic assays
             </p>
@@ -156,40 +197,40 @@
         </div>
       </section>
 
-      <section id="research" class="bg-slate-950 px-6 py-20 text-white md:px-10 lg:px-16">
+      <section id="research" class="section-divider bg-[#eaf4f6] px-6 py-20 text-[#1e3448] md:px-10 lg:px-16">
         <div class="mx-auto max-w-6xl">
           <div class="mb-10 max-w-2xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">Research</p>
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-700">Research</p>
             <h2 class="mt-3 text-3xl font-semibold md:text-4xl">연구 주제</h2>
           </div>
           <div class="grid gap-6 md:grid-cols-3">
-            <article class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-              <div class="mb-4 text-sm text-blue-200">01</div>
+            <article class="interactive-card rounded-3xl border border-white bg-white/70 p-6 shadow-soft backdrop-blur-sm">
+              <div class="mb-4 text-sm text-brand-500">01</div>
               <h3 class="text-2xl font-semibold">Disease model studies</h3>
-              <div class="mt-4 text-sm text-slate-300">Diabetes · Asthma · Sepsis</div>
+              <div class="mt-4 text-sm text-slate-600">Diabetes · Asthma · Sepsis</div>
             </article>
-            <article class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-              <div class="mb-4 text-sm text-blue-200">02</div>
+            <article class="interactive-card rounded-3xl border border-white bg-white/70 p-6 shadow-soft backdrop-blur-sm">
+              <div class="mb-4 text-sm text-brand-500">02</div>
               <h3 class="text-2xl font-semibold">Immunologic assays</h3>
-              <div class="mt-4 text-sm text-slate-300">FACS · RT-qPCR · ELISA</div>
+              <div class="mt-4 text-sm text-slate-600">FACS · RT-qPCR · ELISA</div>
             </article>
-            <article class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-              <div class="mb-4 text-sm text-blue-200">03</div>
+            <article class="interactive-card rounded-3xl border border-white bg-white/70 p-6 shadow-soft backdrop-blur-sm">
+              <div class="mb-4 text-sm text-brand-500">03</div>
               <h3 class="text-2xl font-semibold">Sequencing-based analysis</h3>
-              <div class="mt-4 text-sm text-slate-300">Transcriptomics · Immune profiling</div>
+              <div class="mt-4 text-sm text-slate-600">Transcriptomics · Immune profiling</div>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="activities" class="bg-slate-50 px-6 py-20 md:px-10 lg:px-16">
+      <section id="activities" class="section-divider bg-[#f7fafc] px-6 py-20 md:px-10 lg:px-16">
         <div class="mx-auto max-w-6xl">
           <div class="mb-10 max-w-2xl">
             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-700">Career & Activities</p>
             <h2 class="mt-3 text-3xl font-semibold md:text-4xl">경력과 활동</h2>
           </div>
           <div class="grid gap-6 lg:grid-cols-2">
-            <div class="rounded-3xl bg-white p-6 shadow-soft">
+            <div class="interactive-card rounded-3xl border border-white bg-white p-6 shadow-soft">
               <h3 class="mb-4 text-2xl font-semibold text-slate-900">Career</h3>
               <ul class="space-y-3 text-base text-slate-700">
                 <li class="flex items-center justify-between gap-3 border-b border-slate-100 pb-3 last:border-b-0 last:pb-0">
@@ -198,7 +239,7 @@
                 </li>
               </ul>
             </div>
-            <div class="rounded-3xl bg-white p-6 shadow-soft">
+            <div class="interactive-card rounded-3xl border border-white bg-white p-6 shadow-soft">
               <h3 class="mb-4 text-2xl font-semibold text-slate-900">Activities</h3>
               <ul class="space-y-3 text-base text-slate-700">
                 <li class="flex items-center justify-between gap-3 border-b border-slate-100 pb-3 last:border-b-0 last:pb-0">
@@ -223,12 +264,12 @@
         </div>
       </section>
 
-      <section id="publications" class="mx-auto max-w-6xl px-6 py-20 md:px-10 lg:px-16">
+      <section id="publications" class="section-divider mx-auto max-w-6xl px-6 py-20 md:px-10 lg:px-16">
         <div class="mb-10 max-w-2xl">
           <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-700">Publications</p>
           <h2 class="mt-3 text-3xl font-semibold md:text-4xl">대표 논문</h2>
         </div>
-        <div class="rounded-3xl bg-white p-6 shadow-soft">
+        <div class="interactive-card rounded-3xl border border-white bg-white p-6 shadow-soft">
           <div class="flex flex-wrap items-center justify-between gap-3 text-base text-slate-700">
             <div class="min-w-0">
               <div class="font-semibold text-slate-900">Cytokine-mediated, organ-specific immune modulation and dysregulation of innate lymphocytes in sepsis</div>
@@ -238,7 +279,7 @@
         </div>
       </section>
 
-      <section id="contact" class="bg-slate-100 px-6 py-20 md:px-10 lg:px-16">
+      <section id="contact" class="section-divider bg-[#eaf4f6] px-6 py-20 md:px-10 lg:px-16">
         <div class="mx-auto max-w-6xl rounded-[28px] bg-white p-8 shadow-soft md:p-10">
           <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
@@ -248,7 +289,7 @@
             <div class="grid gap-4 sm:grid-cols-2">
               <a
                 href="mailto:hansy0923@gachon.ac.kr"
-                class="rounded-2xl bg-brand-50 p-5 transition hover:bg-brand-100"
+                class="rounded-2xl border border-transparent bg-brand-50 p-5 transition duration-200 hover:-translate-y-0.5 hover:border-brand-500/20 hover:bg-white hover:shadow-md"
               >
                 <div class="text-sm text-slate-500">Email</div>
                 <div class="mt-2 font-semibold text-slate-900">hansy0923@gachon.ac.kr</div>
@@ -257,7 +298,7 @@
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                class="rounded-2xl bg-slate-50 p-5 transition hover:bg-slate-100"
+                class="rounded-2xl border border-transparent bg-slate-50 p-5 transition duration-200 hover:-translate-y-0.5 hover:border-brand-500/20 hover:bg-white hover:shadow-md"
               >
                 <div class="text-sm text-slate-500">Link</div>
                 <div class="mt-2 font-semibold text-slate-900">LinkedIn / Research Profile</div>
@@ -268,7 +309,7 @@
       </section>
     </main>
 
-    <footer class="bg-slate-950 px-6 py-6 text-center text-sm text-slate-300 md:px-10 lg:px-16">
+    <footer class="bg-[#d6ece9] px-6 py-6 text-center text-sm text-[#315f68] md:px-10 lg:px-16">
       © 2026 Han Seoyeon · Research Portfolio
     </footer>
   </body>
